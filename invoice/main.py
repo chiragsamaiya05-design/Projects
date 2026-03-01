@@ -19,6 +19,7 @@ class Customer:
        
 
 class Items:
+    it_list = []
 
     def __init__(self):
         self.items = input("Enter item name : ")
@@ -33,12 +34,23 @@ class Items:
             "Price":self.price
         }
         return self.item
+    def disp_item(self):
+        it_ls = self.item_list()
+        for key ,value in it_ls.items():
+            print(f"{key}:  {value}",end = " ")
+        print("\ntotal price of item is :",self.qty*self.price)
 
     def item_calc(self):
-
-        return self.price*self.qty
         
-
+        a =  self.price*self.qty
+        Items.it_list.append(a)
+        return self.it_list
+    def item_total(self):
+        self.sum = 0
+        for i in self.it_list:
+            self.sum += i
+        return self.sum
+            
 
 class Invoice(Customer,Items):
     cgst= 0.025
@@ -54,7 +66,9 @@ class Invoice(Customer,Items):
         self.cgst = cgst/100
 
     def add_disc(self):
-        self.ttl = self.item.item_calc()
+        self.ttl = 0
+       
+        self.ttl = item.item_total()
         self.dis_cal = self.ttl * self.disc
         self.add_dis = self.ttl - self.dis_cal
         return self.add_dis
@@ -68,22 +82,27 @@ class Invoice(Customer,Items):
     
     def display(self):
         id_cust = self.customer.customer_id()
-        it_ls = self.item.item_list()
+       
         for key , value in id_cust.items():
             print(f"{key}:{value}",)
-        for key ,value in it_ls.items():
-            print(f"{key}:  {value}",end = " ")
+        
         print("\nCGST that are applied on your items is :",self.cgst*100,"%")
         print("\nSGST that are applied on your items is :",self.sgst*100,"%")
         print("\n Total amount after GST  on your items is :",self.cgst*100,"%")
         print("\nTotal amount after GST and discounts",self.disc*100,"% : ",self.tax_calc())        
 
        
-
+a =[]
 c1 = Customer('Chirag',9898)
-i1 = Items()
+k = int(input("enter : "))
+for it in range(k):
+    print("\n")
+    item = Items()
+    a.append(item)
+    item.disp_item()
+    item.item_calc()
 
-dis = float(input("Enter percentage of discount you want to give on items : "))
+dis = float(input("\nEnter percentage of discount you want to give on items : "))
 gst = float(input("Enter percentage of GST  you want to apply  on items : "))
-I1 = Invoice(c1,i1,dis,gst,gst)
+I1 = Invoice(c1,a,dis,gst,gst)
 I1.display()
