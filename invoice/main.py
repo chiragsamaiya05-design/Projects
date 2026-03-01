@@ -21,10 +21,10 @@ class Customer:
 class Items:
     it_list = []
 
-    def __init__(self):
-        self.items = input("Enter item name : ")
-        self.qty = int(input("Enter Quantity of items : "))
-        self.price = float(input("Enter price of item : "))
+    def __init__(self,items,qty,price):
+        self.items = items
+        self.qty = qty
+        self.price = price
 
     def item_list(self):
         
@@ -52,12 +52,7 @@ class Items:
         return self.sum
             
 
-class Invoice(Customer,Items):
-    cgst= 0.025
-    sgst = 0.025
-
-    
-
+class Invoice():
     def __init__(self, customer, item,disc,sgst,cgst):
         self.customer = customer
         self.item = item
@@ -94,13 +89,16 @@ class Invoice(Customer,Items):
 
        
 a =[]
+
 name = input("Enter your name : ")
 phone_no = input("Enter your phone number : ")
 c1 = Customer(name,phone_no)
 k = int(input("Enter the count of Items : "))
 for it in range(k):
-    print("\n")
-    item = Items()
+    items = input("Enter item name : ")
+    qty = int(input("Enter Quantity of items : "))
+    price = float(input("Enter price of item : "))
+    item = Items(items,qty,price)
     a.append(item)
     item.disp_item()
     item.item_calc()
