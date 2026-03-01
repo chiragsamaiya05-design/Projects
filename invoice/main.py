@@ -89,12 +89,15 @@ class Invoice(Customer,Items):
         print("\nCGST that are applied on your items is :",self.cgst*100,"%")
         print("\nSGST that are applied on your items is :",self.sgst*100,"%")
         print("\n Total amount after GST  on your items is :",self.cgst*100,"%")
-        print("\nTotal amount after GST and discounts",self.disc*100,"% : ",self.tax_calc())        
+        print("\nTotal amount after GST and discounts",self.disc*100,"% : ",self.tax_calc())
+        print()       
 
        
 a =[]
-c1 = Customer('Chirag',9898)
-k = int(input("enter : "))
+name = input("Enter your name : ")
+phone_no = input("Enter your phone number : ")
+c1 = Customer(name,phone_no)
+k = int(input("Enter the count of Items : "))
 for it in range(k):
     print("\n")
     item = Items()
@@ -105,4 +108,5 @@ for it in range(k):
 dis = float(input("\nEnter percentage of discount you want to give on items : "))
 gst = float(input("Enter percentage of GST  you want to apply  on items : "))
 I1 = Invoice(c1,a,dis,gst,gst)
+print(" ")
 I1.display()
