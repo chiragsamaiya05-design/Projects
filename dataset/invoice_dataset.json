@@ -1,0 +1,12 @@
+[
+{
+"instruction":"Generate medical invoice",
+"input":"Customer: Rahul, Medicine: Paracetamol, Quantity:2, Price:20",
+"output":"Invoice ID:1001, Customer:Rahul, Item:Paracetamol, Quantity:2, Total:40"
+},
+{
+"instruction":"Generate medical invoice",
+"input":"Customer: Amit, Medicine: Crocin, Quantity:3, Price:15",
+"output":"Invoice ID:1002, Customer:Amit, Item:Crocin, Quantity:3, Total:45"
+}
+]
