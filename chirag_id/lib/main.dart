@@ -13,7 +13,14 @@ void main() {
      return Scaffold(
        backgroundColor: Colors.grey[900] ,
      appBar: AppBar(
-     title: Text('Chirag id Card'),
+     title: Text(
+         'Chirag Id Card',
+       style: TextStyle(
+         color: Colors.white70,
+         fontSize: 24.0,
+         letterSpacing: 2.0,
+       ),
+     ),
        centerTitle: true,
        backgroundColor: Colors.grey[850],
        elevation: 0.0,
