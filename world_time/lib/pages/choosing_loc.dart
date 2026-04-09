@@ -8,13 +8,30 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
+  void getData() async{
+
+    //simulate network request for a user
+     String username = await Future.delayed(Duration(seconds: 3),(){
+      return 'yashi';
+    });
+
+
+    //simulate network request to gey bio of the user
+     String bio = await Future.delayed(Duration(seconds: 3),(){
+      return  'vegan , musician,& egg collector';
+    });
+
+    print('$username  -$bio');
+  }
 
 int counter = 0;
 
   @override
   void initState() {
     super.initState();
-    print('init fxn ran ');
+    getData();
+    print('hi app');
+
   }
 
   @override
@@ -24,7 +41,7 @@ int counter = 0;
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.lightBlue[700],
-        title: Text('Choose location'),
+        title: Text('Choose  a Location'),
         centerTitle: true,
         elevation: 0,
       ),
