@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class AddNoteScreen extends StatefulWidget {
+  final Map? note;
+  final int? index;
+
+  const AddNoteScreen({super.key, this.note, this.index});
 
 
   @override
@@ -17,6 +21,10 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
   void initState() {
     super.initState();
     box = Hive.box('notesBox');
+    if (widget.note != null) {
+      titleController.text = widget.note!['title'];
+      contentController.text = widget.note!['content'];
+    }
   }
 
   void saveNote() {
@@ -24,11 +32,17 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
     String content = contentController.text.trim();
 
     if (title.isEmpty || content.isEmpty) return;
-
+    if(widget.note == null){
     box.add({
       'title': title,
       'content': content,
     });
+  }else {
+  box.putAt(widget.index!, {
+  'title':title,
+  'content': content,
+  });
+  }
 
     Navigator.pop(context);
   }
@@ -61,8 +75,13 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                  onPressed: saveNote,
-                  child: Text("Save"),
+                onPressed: saveNote,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightBlue,
+                  foregroundColor: Colors.black,
+                ),
+                child: Text(" Save"),
+
               )
             ],
           ),
