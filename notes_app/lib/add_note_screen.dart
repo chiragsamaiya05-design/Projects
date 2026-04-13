@@ -51,40 +51,54 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Note"),
+        backgroundColor: Colors.black,
+        title: const  Text("Add Note",
+        style: TextStyle(color: Colors.white),
+        ),
       ),
-      body: Padding(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: InputDecoration(
-                  labelText: "Title",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 15),
-              TextField(
-                controller: contentController,
-                maxLines: 5,
-                decoration: InputDecoration(
-                  labelText: "content",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: saveNote,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.lightBlue,
-                  foregroundColor: Colors.black,
-                ),
-                child: Text(" Save"),
+      body:
 
-              )
-            ],
-          ),
+      Container(
+        color: Colors.black,
+        child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                TextField(
+                  controller: titleController,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+
+                    labelText: "Title",
+                    border: OutlineInputBorder(),
+                    fillColor: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 15),
+                TextField(
+                  controller: contentController,
+                  style: TextStyle(color: Colors.white),
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                    labelText: "Content",
+                    border: OutlineInputBorder(),
+
+                    fillColor: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: saveNote,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.lightBlue,
+                    foregroundColor: Colors.black,
+                  ),
+                  child: Text(" Save"),
+
+                )
+              ],
+            ),
+        ),
       ),
     );
   }
